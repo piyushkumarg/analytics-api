@@ -26,10 +26,11 @@ async function bootstrap() {
     .setDescription('Event analytics collection and reporting API')
     .setVersion('1.0')
     .addApiKey({ type: 'apiKey', name: 'X-API-KEY', in: 'header' })
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('api-docs', app, document);
 
   await app.listen(port, host, async () => {
     console.info('Server Started', {
