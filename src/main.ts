@@ -1,24 +1,34 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 const Package = require('../package.json');
+import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    logger: false,
+    logger: console,
   });
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, // Removes unexpected properties
+      forbidNonWhitelisted: true, // Throws error if extra properties exist
+      transform: true, // Auto-transforms query params into correct types
+      validationError: { target: false }, // Prevents returning full input
+    }),
+  );
 
   const port = Number(process.env.PORT) || 3006;
   const host = '0.0.0.0';
 
-  const config = new DocumentBuilder()
+  const swaggerConfig = new DocumentBuilder()
     .setTitle('Analytics API')
-    .setDescription('The Analytics API description')
+    .setDescription('Event analytics collection and reporting API')
     .setVersion('1.0')
-    .addTag('analytics')
+    .addApiKey({ type: 'apiKey', name: 'X-API-KEY', in: 'header' })
     .build();
 
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, document);
 
   await app.listen(port, host, async () => {
@@ -35,5 +45,4 @@ async function bootstrap() {
     });
   });
 }
-
 bootstrap();
