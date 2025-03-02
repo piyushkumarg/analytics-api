@@ -2,7 +2,7 @@ import { Controller, Post, Body, Get, Query, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiResponse, ApiHeader } from '@nestjs/swagger';
 import { AnalyticsService } from './analytics.service';
 import { CreateEventDto } from './dto/create-event.dto';
-import { ApiKeyGuard } from 'src/auth/guards/api-key.guard';
+import { ApiKeyGuard } from '../auth/guards/api-key.guard';
 import { EventSummaryDto } from './dto/event-summary.dto';
 import { UserStatsDto } from './dto/user-stats.dto';
 

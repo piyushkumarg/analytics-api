@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Request } from 'express';
-import { ApiKey } from 'src/entity/api-key.entity';
+import { ApiKey } from '../../entities/api-key.entity';
 
 @Injectable()
 export class ApiKeyGuard implements CanActivate {

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Op } from 'sequelize';
-import { AnalyticsEvent } from '../entity/analytics-event.entity';
+import { AnalyticsEvent } from '../entities/analytics-event.entity';
 import { CreateEventDto } from './dto/create-event.dto';
 import { EventSummaryDto } from './dto/event-summary.dto';
 

@@ -6,8 +6,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { User } from 'src/entity/user.entity';
-import { ApiKey } from 'src/entity/api-key.entity';
+import { User } from '../entities/user.entity';
+import { ApiKey } from '../entities/api-key.entity';
 import { GoogleStrategy } from './strategies/google.strategy';
 
 @Module({

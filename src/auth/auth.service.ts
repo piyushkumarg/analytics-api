@@ -3,8 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/sequelize';
 import { RegisterAppDto } from './dto/register-app.dto';
 import * as crypto from 'crypto';
-import { User } from 'src/entity/user.entity';
-import { ApiKey } from 'src/entity/api-key.entity';
+import { User } from '../entities/user.entity';
+import { ApiKey } from '../entities/api-key.entity';
 import { Op } from 'sequelize';
 
 @Injectable()
