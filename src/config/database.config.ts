@@ -1,5 +1,6 @@
 import { SequelizeModuleOptions } from '@nestjs/sequelize';
 import { ConfigService } from '@nestjs/config';
+import pg from 'pg';
 
 export const databaseConfig = (
   config: ConfigService,
@@ -9,10 +10,5 @@ export const databaseConfig = (
   autoLoadModels: true,
   synchronize: true,
   ssl: true,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+  dialectOptions: pg,
 });

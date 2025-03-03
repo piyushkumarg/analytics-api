@@ -6,6 +6,7 @@ import { CreateEventDto } from './dto/create-event.dto';
 import { EventSummaryDto } from './dto/event-summary.dto';
 import { UserStatsDto } from './dto/user-stats.dto';
 
+
 describe('AnalyticsController', () => {
   let controller: AnalyticsController;
   let analyticsService: AnalyticsService;
